@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText input; //input
     private TextView printout, change; //output
     private android.widget.Toast Toast;
-    private Button nextPageBtn, red, green, blue, pink, ygreen, cyan;
+    private Button nextPageBtn, red, green, blue, pink, ygreen, cyan, clearAll, addition, subtraction;
+    int size = 20;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     printout.setText(send.getText().toString());
                 }
-                printout.setText(send.getText().toString());
                 return false;
             }
         });
@@ -93,6 +93,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 printout.setBackgroundColor(getResources().getColor(R.color.cyan));
+            }
+        });
+
+        //清除TextView
+        final Button clearAll = (Button)findViewById(R.id.ClearAll);
+        clearAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printout.setText("");
+            }
+        });
+
+        //字體大小
+        final Button addition = (Button)findViewById(R.id.addition);
+        addition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printout.setTextSize(size++);
+            }
+        });
+        final Button subtraction = (Button)findViewById(R.id.subtraction);
+        subtraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                printout.setTextSize(size--);
             }
         });
     }
